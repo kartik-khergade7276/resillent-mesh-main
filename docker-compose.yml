@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  gateway-service:
+    build: ./gateway-service
+    container_name: resilient-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      DOWNSTREAM_BASE_URLS: "http://orders-service-1:8080,http://orders-service-2:8080"
+
+  orders-service-1:
+    build: ./orders-service
+    container_name: resilient-orders-1
+    environment:
+      SERVICE_NAME: "orders-service-1"
+      CHAOS_PROBABILITY: "0.3"
+      MAX_EXTRA_LATENCY_MS: "1500"
+
+  orders-service-2:
+    build: ./orders-service
+    container_name: resilient-orders-2
+    environment:
+      SERVICE_NAME: "orders-service-2"
+      CHAOS_PROBABILITY: "0.3"
+      MAX_EXTRA_LATENCY_MS: "1500"
