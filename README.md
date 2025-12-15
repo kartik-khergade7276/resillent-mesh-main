@@ -1,6 +1,6 @@
-ResilientMesh – Self-Healing Microservice Mesh (Demo)
+# ResilientMesh – Self-Healing Microservice Mesh
 
-This project is a small, ready-to-run demo of a self-healing microservice mesh concept.
+This project is a small, a self-healing microservice mesh concept.
 
 Features demonstrated
 - Auto-detect failing nodes via health checks and circuit breakers.
